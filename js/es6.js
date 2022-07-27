@@ -39,9 +39,9 @@ SETTING.URL = "ssm";
   primitive value: string, number, boolean, undefined, null các kiểu dữ liệu máy tính hiểu được.
    reference value (object,array,SinhVien ...): {} hoăc [] : biến lưu trữ địa chỉ ô nhớ
    let sv = new SinhVien();
-     0xxx
+	 0xxx
    let ob1 = {};
-    0yyy
+	0yyy
  */
 
 // -------- function --------
@@ -67,8 +67,8 @@ showMess();
   + không hỗ trợ hoisting
   + Khi function chỉ có 1 tham số thì không cần (). Hai tham số trở lên thì phải có (param1, param2)
   + Khi function chỉ có duy nhất 1 lệnh return thì có thể bỏ {} và return. Nếu nhiều dòng xử lý thì phải có {
-      lệnh 1;
-      lệnh 2 ;....
+	  lệnh 1;
+	  lệnh 2 ;....
   }
   + Arrow function không hỗ trợ con trỏ this (context)
  */
@@ -120,7 +120,7 @@ product.showInfo();
 // let lh2 = new LopHoc();
 
 /*
-    Cho mảng màu yêu cầu
+	Cho mảng màu yêu cầu
   + Render ra các button tại div#colors
   + Xử lý khi click vào các button thì <i> thay đổi màu sắc tương ứng
 */
@@ -275,19 +275,24 @@ console.log(myClass);
 
 // ---------------------- for in, for of --------------------//
 // for in duyet Object ({}) mỗi lần duyệt lấy ra ten thuoc tính (key) của object
-// for of duyet Array
+// for of duyet Array ([]) mỗi lần duyệt lấy ra 1 phần tử của mảng
 let arrProduct = [
-  { id: "01", name: "iphone", price: 1000, productTypeId: "Phone" },
-  { id: "02", name: "iphone XS", price: 2000, productTypeId: "Phone" },
-  { id: "03", name: "Macbook pro", price: 1500, productTypeId: "Laptop" },
+  { id: "01", name: "iphone", price: 1000, productTypeId: "Phone" }, // index: 0
+  { id: "02", name: "iphone XS", price: 2000, productTypeId: "Phone" }, // index: 1
+  { id: "03", name: "Macbook pro", price: 1500, productTypeId: "Laptop" }, // index: 2
   { id: "04", name: "Macbook pro 2022", price: 2500, productTypeId: "Laptop" },
   { id: "05", name: "Ipad Pro", price: 2500, productTypeId: "Tablet" },
   { id: "06", name: "Ipad Pro 2022", price: 3000, productTypeId: "Tablet" },
 ];
-
+// for in: ngoài duyệt index của mảng thì còn duyệt được key của object
 for (let index in arrProduct) {
   // mỗi lần duyệt lấy ra 1 index của mảng
   let prod = arrProduct[index];
+  console.log("prod", prod);
+}
+
+for (let prod of arrProduct) {
+  // mỗi lần duyệt lấy ra 1 phần tử của mảng
   console.log("prod", prod);
 }
 
@@ -303,16 +308,20 @@ for (let key in productDefault) {
   console.log(key, productDefault[key]);
   tr += `<td>${productDefault[key]}</td>`;
 }
-tr += "</tr>";
+tr += "</tr>"; // có bao nhiêu thuộc tính thì tự tạo thẻ td
 console.log(tr);
 
 // một số hàm xử lý mảng trong es6 [].method
 
-// .filter:
-/* Lấy ra các product là phone */
+// .filter: Dùng để lọc 1 mảng con (kết quả trả về mảng) từ mảng chính. Nếu phần tử thoả arrow function thì phần tử đó sẽ được add vào mảng kết quả. Nếu ko có phần tử nào khớp arrow function thì kết quả trả về mảng rỗng []
 
-let arrPhone = arrProduct.filter((item) => item.productTypeId == "Phone");
+/* Lấy ra các product là phone */
+let arrPhone = arrProduct.filter((item) => item.productTypeId === "Phone");
 console.log("arrPhone", arrPhone);
+
+// lấy sp có giá từ 2k trở xuống
+let arrPrice2000 = arrProduct.filter((item) => item.price <= 2000);
+console.log("arrPrice2000", arrPrice2000);
 
 // .findIndex : Dùng để tìm vị trí phần tử trong mảng khớp với arrow function. Nếu ko tìm thấy thì trả về -1
 let index = arrProduct.findIndex((prod) => prod.id === "03"); // trả về 2
@@ -326,6 +335,7 @@ if (pt05) {
   console.log("không tìm thấy");
 }
 // .map(): hàm dùng để biến đổi mảng này thành mảng khác, tạo ra mảng mới từ mảng cũ
+/*  
 let arrResult = arrProduct.map((item, index) => {
   // xử lý để trả về ele mới
   let newValue = { id: item.id, name: item.name };
@@ -335,24 +345,26 @@ console.log(arrResult);
 
 let inner = arrProduct.map((item, index) => {
   let tr = `<tr>
-  <tr>${item.id} </tr>
-  <tr>${item.name} </tr>
-  <tr>${item.price} </tr>
-  <tr>${item.productTypeId} </tr>
+	<td>${item.id} </td>
+	<td>${item.name} </td>
+	<td>${item.price} </td>
+	<td>${item.productTypeId} </td>
   </tr>`;
   return tr;
 });
 console.log(inner);
 
-for (let prod of inner) {
+for (let tr of inner) {
   document.querySelector("#tableProduct").innerHTML += tr;
 }
+*/
 
 //reduce: tương tự map tuy nhien biến 1 mảng thành 1 giá trị ([],{},string, number...)
 // vd muốn tính tổng tiền của 1 số sản phẩm
 
 let tongTien = arrProduct.reduce((price, item, index) => {
-  return price + item.price;
+  // price = 0, price 1000, price 3000
+  return price + item.price; // 1000 3000
 }, 0);
 console.log(tongTien);
 
@@ -361,10 +373,10 @@ let renderTblProduct = () => {
     return (
       innerHTML +
       `<tr>
-      <tr>${item.id} </tr>
-       <tr>${item.name} </tr>
-       <tr>${item.price} </tr>
-     <tr>${item.productTypeId} </tr>
+     	 <td>${item.id} </td>
+       <td>${item.name} </td>
+       <td>${item.price} </td>
+   	  <td>${item.productTypeId} </td>
   </tr>`
     );
   }, "");
@@ -377,7 +389,7 @@ renderTblProduct();
 arrProduct.reverse();
 console.log("arrProduct", arrProduct);
 
-// sort"
+// sort
 // short theo giá tiền sản phẩm
 
 document.querySelector("#btnSapXep").onclick = function () {
@@ -392,13 +404,12 @@ document.querySelector("#btnSapXep").onclick = function () {
 
 // Bài tập: thông tin nhân viên
 document.querySelector("#btnXuatThongTin").onclick = (event) => {
-  event.preventDefault(); // Chặn reloaad cua browser
+  event.preventDefault(); // Chặn reload cua browser
   let arrInput = document.querySelectorAll("#frm input,#frm select");
   let nv = {};
   // DOM
   for (let tagInput of arrInput) {
-    let id = tagInput.id;
-    let value = tagInput.value;
+    let { id, value } = tagInput;
     nv[id] = value;
   }
   let html = "";
