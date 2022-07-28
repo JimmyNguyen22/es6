@@ -421,3 +421,98 @@ document.querySelector("#btnXuatThongTin").onclick = (event) => {
   }
   document.querySelector("#tblNhanVien").innerHTML = html;
 };
+
+import { NhanVien, arr } from "../models/NhanVien.js";
+
+// import default
+import NhanVienProto from "../models/NhanVien.js";
+
+let nv = new NhanVien();
+console.log(nv, arr);
+
+// es5
+
+function SinhVienES5(maSV, tenSV) {
+  this.tenSinhVien = maSV;
+  this.maSinhVien = tenSV;
+  this.hienThiTT = function () {
+    console.log("ten sinh vien", this.tenSinhVien);
+    console.log("mã sinh vien", this.maSinhVien);
+  };
+}
+// Hàm khởi tạo có tham số trong es5
+let svES5 = new SinhVienES5(1, "jimmy");
+console.log(svES5);
+
+// es6
+class SinhVienES6 {
+  maSinhVien = "";
+  tenSinhVien = "";
+  constructor(masv, tensv) {
+    // Hàm khởi tạo
+    this.maSinhVien = masv;
+    this.tenSinhVien = tensv;
+  }
+  hienThiTT() {
+    console.log("ten sinh vien", this.tenSinhVien);
+    console.log("mã sinh vien", this.maSinhVien);
+  }
+}
+
+let sv = new SinhVienES6(2, "jimmy ngu");
+console.log(sv);
+
+/*    Tính chất của hướng đối tượng
+    Javascript ko phải ngôn ngữ thuần hướng đối tượng
++ Tính trừu tượng ( Abstraction) Đưa các thông tin cần lưu trữ ở ngoài thực tế vào đối tượng ( trở thành thuộc tính ,phương thức)
++ Tính đóng gói ( Encapsulation) Thuộc tính và phương thức của đối tượng nào thì chỉ có đối tượng đó truy xuất
++ Tính kế thừa ( Inheritance) Tất cả thuộc tính của class cha sẽ được thừa hưởng của class con mà ko cần khai báo
+  . Khi nào khai báo phương thức thuần tenPhuongThuc() {} => khi cần overide hàm
+  . Khi nào khai báo phương thức thuộc tính = funciton () {} => khi cần sao chép giá trị bởi spread operator ( mặc định)
++ Tính đa hình (js ko có - ts có)
+ 
+*/
+
+class NguoiDung {
+  taiKhoan = "";
+  matKhau = "";
+  email = "";
+  soDienThoai = "";
+  luongCoBan = 1000;
+  heSoluong = 1;
+  constructor() {}
+  dangNhap() {
+    // Chuyển hướng về profile
+    console.log("đăng nhập", this.taiKhoan);
+  }
+  dangXuat() {
+    console.log("đăng xuất");
+  }
+  chamCong() {
+    let luong = this.luongCoBan * this.heSoluong;
+    console.log("chấm công", luong);
+    return luong;
+  }
+}
+
+class GiangVien extends NguoiDung {
+  soBuoiDay = 0;
+  constructor() {
+    super();
+  }
+
+  // overide ghi đè hàm cha
+  dangNhap() {
+    super.dangNhap();
+    // chuyển hướng view giảng viên
+    console.log("chuyen huong");
+  }
+  // ghi đè phương thức cha
+  chamCong() {
+    super.luongCoBan = 5000;
+    return super.chamCong() * 1.5;
+  }
+}
+
+let gv = new GiangVien();
+console.log(gv.chamCong());
