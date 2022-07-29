@@ -8,7 +8,9 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Dashboard Food</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
@@ -54,32 +56,32 @@
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="sidebar-sticky pt-3">
-                  <ul class="nav flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link " href="./index.html">
-                        <i class="fa fa-home"></i>
-                        Dashboard 
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link active" href="./food.html">
-                        <i class="fa fa-utensils"></i>
-                        Add Food<span class="sr-only">(current)</span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="./food-list.html">
-                        <i class="fa fa-list"></i>
-                        Food List
-                      </a>
-                    </li>
-                  
-                           
-                  </ul>
-        
-                  
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link " href="./index.html">
+                                <i class="fa fa-home"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./food.html">
+                                <i class="fa fa-utensils"></i>
+                                Add Food<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./food-list.html">
+                                <i class="fa fa-list"></i>
+                                Food List
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+
                 </div>
-              </nav>
+            </nav>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
@@ -147,20 +149,21 @@
                                         <div class="col-md-6 mb-3">
                                             <label for="tinhTrang">Tình Trạng</label>
                                             <select class="custom-select d-block w-100" id="tinhTrang" required>
-                                              <option value="">Chọn tình trạng</option>
-                                              <option value="0">Hết</option>
-                                              <option value="1">Còn</option>
-                                              
+                                                <option value="">Chọn tình trạng</option>
+                                                <option value="0">Hết</option>
+                                                <option value="1">Còn</option>
+
                                             </select>
                                             <div id="invalidTT" class="invalid-feedback">
-                            
+
                                             </div>
-                                          </div> 
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <div class="form-group">
-                                            <label for="hinhMon">Hình Món Ăn</label>                                          
-                                            <input type="text" id="hinhMon" class="form-control" placeholder="Nhập link hình ảnh" required>
+                                            <label for="hinhMon">Hình Món Ăn</label>
+                                            <input type="text" id="hinhMon" class="form-control"
+                                                placeholder="Nhập link hình ảnh" required>
                                         </div>
                                     </div>
 
@@ -171,7 +174,8 @@
                                         </div>
                                     </div>
                                     <hr class="mb-4">
-                                    <button id="btnThemMon" class="btn btn-warning btn-lg btn-block" type="button">Thêm Món</button>
+                                    <button id="btnThemMon" class="btn btn-warning btn-lg btn-block" type="button">Thêm
+                                        Món</button>
                                 </form>
                             </div>
                         </div>
@@ -185,7 +189,7 @@
                             <div class="card-body">
                                 <ul class="list-group mb-3">
                                     <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                        <img id="imgMonAn" src="" alt="hình món ăn">
+                                        <img id="imgMonAn" src="../../assets/img/food-1.jpg" alt="hình món ăn">
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                                         <div>
@@ -266,7 +270,9 @@
         </ul>
     </footer>
     <style>
-        #foodForm input,#foodForm select,#foodForm textarea  {
+        #foodForm input,
+        #foodForm select,
+        #foodForm textarea {
             background-color: orange !important;
             color: #fff !important;
         }
@@ -276,7 +282,7 @@
     <script src="../../assets/lib/js/Jquery/jquery-3.5.1.slim.min.js"></script>
     <script src="../../assets/lib/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  
+
     <script type="module" src="../controllers/food.js"></script>
 </body>
 
