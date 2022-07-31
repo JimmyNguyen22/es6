@@ -43,7 +43,7 @@ const renderTableMonAn = (mangMonAn) => {
             <td>${monAnMerge.tinhGiaKhuyenMai()}</td>
             <td>${TINH_TRANG[monAnMerge.tinhTrang]} </td>
             <td> 
-                <button class="btn btn-danger" onclick="xoaMonAN('${
+                <button class="btn btn-danger" onclick="xoaMonAn('${
                   monAnMerge.maMon
                 }')"> Xoá</button>
                 <button class="btn btn-primary" data-toggle="modal"
